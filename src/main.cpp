@@ -77,7 +77,7 @@ int main(int argc, char** argv) {
   std::string dbTableName[10];
   int index = 0;
   // add the exchange functions to the arrays for all the defined exchanges
-  if (params.bitfinexApi.empty() == false || params.demoMode == true) {
+  if (params.bitfinexEnabled && (params.bitfinexApi.empty() || params.demoMode)) {
     params.addExchange("Bitfinex", params.bitfinexFees, true, true);
     getQuote[index] = Bitfinex::getQuote;
     getAvail[index] = Bitfinex::getAvail;
@@ -92,7 +92,7 @@ int main(int argc, char** argv) {
     }
     index++;
   }
-  if (params.okcoinApi.empty() == false || params.demoMode == true) {
+  if (params.okcoinEnabled && (params.okcoinApi.empty() || params.demoMode)) {
     params.addExchange("OKCoin", params.okcoinFees, false, true);
     getQuote[index] = OKCoin::getQuote;
     getAvail[index] = OKCoin::getAvail;
@@ -107,7 +107,7 @@ int main(int argc, char** argv) {
     }
     index++;
   }
-  if (params.bitstampClientId.empty() == false || params.demoMode == true) {
+  if (params.bitstampEnabled && (params.bitstampClientId.empty() || params.demoMode)) {
     params.addExchange("Bitstamp", params.bitstampFees, false, true);
     getQuote[index] = Bitstamp::getQuote;
     getAvail[index] = Bitstamp::getAvail;
@@ -121,7 +121,7 @@ int main(int argc, char** argv) {
     }
     index++;
   }
-  if (params.geminiApi.empty() == false || params.demoMode == true) {
+  if (params.geminiEnabled && (params.geminiApi.empty() || params.demoMode)) {
     params.addExchange("Gemini", params.geminiFees, false, true);
     getQuote[index] = Gemini::getQuote;
     getAvail[index] = Gemini::getAvail;
@@ -135,7 +135,7 @@ int main(int argc, char** argv) {
     }
     index++;
   }
-  if (params.krakenApi.empty() == false || params.demoMode == true) {
+  if (params.krakenEnabled && (params.krakenApi.empty() || params.demoMode)) {
     params.addExchange("Kraken", params.krakenFees, false, true);
     getQuote[index] = Kraken::getQuote;
     getAvail[index] = Kraken::getAvail;
@@ -149,7 +149,7 @@ int main(int argc, char** argv) {
     }
     index++;
   }
-  if (params.itbitApi.empty() == false || params.demoMode == true) {
+  if (params.itbitEnabled && (params.itbitApi.empty() || params.demoMode)) {
     params.addExchange("ItBit", params.itbitFees, false, false);
     getQuote[index] = ItBit::getQuote;
     getAvail[index] = ItBit::getAvail;
@@ -161,7 +161,7 @@ int main(int argc, char** argv) {
     }
     index++;
   }
-  if (params.btceApi.empty() == false || params.demoMode == true) {
+  if (params.btceEnabled && (params.btceApi.empty() || params.demoMode)) {
     params.addExchange("BTC-e", params.btceFees, false, false);
     getQuote[index] = BTCe::getQuote;
     getAvail[index] = BTCe::getAvail;
@@ -173,7 +173,7 @@ int main(int argc, char** argv) {
     }
     index++;
   }
-  if (params.poloniexApi.empty() == false || params.demoMode == true) {
+  if (params.poloniexEnabled && (params.poloniexApi.empty() || params.demoMode)) {
     params.addExchange("Poloniex", params.poloniexFees, true, false);
     getQuote[index] = Poloniex::getQuote;
     getAvail[index] = Poloniex::getAvail;
